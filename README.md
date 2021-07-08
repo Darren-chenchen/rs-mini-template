@@ -1,19 +1,37 @@
-# testgithubuniapptemplatetwo3
+# 项目模板默认是采用 ts 语法
 
-## Project setup
-```
-npm install
-```
+# 新建项目
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
+npm i -g rs-mini-cli
+rs-mini-cli init 项目名
 ```
 
-### Compiles and minifies for production
+# 新建 js 组件模板
+
 ```
-npm run build
+rs-mini-cli js 文件名 文件路径
+rs-mini-cli js test /src/pages
+
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# 新建 ts 组件模板
+
+```
+rs-mini-cli js 文件名 文件路径
+rs-mini-cli js test /src/pages
+
+```
+
+# 新建模块
+
+```
+ rs-mini-cli module 模块名 模块上层路径
+ rs-mini-cli module test src/pages
+```
+
+# 运行事例程序,具体查看 package.json
+
+```
+npm run example
+```

@@ -12,19 +12,19 @@ module.exports = {
     borderStyle: 'white',
     list: [
       {
-        pagePath: 'pages/example/index',
+        pagePath: 'pages/example/index/index',
         iconPath: 'static/example/ic_homepage_normal.png',
         selectedIconPath: 'static/example/ic_homepage_selected.png',
         text: '组件'
       },
       {
-        pagePath: 'pages/example/icon',
+        pagePath: 'pages/example/icon/icon',
         iconPath: 'static/example/ic_find_normal.png',
         selectedIconPath: 'static/example/ic_find_selected.png',
         text: '内置图标'
       },
       {
-        pagePath: 'pages/example/commoncss',
+        pagePath: 'pages/example/commoncss/commoncss',
         iconPath: 'static/example/ic_template_card.png',
         selectedIconPath: 'static/example/ic_template.png',
         text: '全局功能'

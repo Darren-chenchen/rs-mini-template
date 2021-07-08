@@ -22,8 +22,7 @@
 export default {
   data() {
     return {
-      StatusBar: this.StatusBar,
-      CustomBar: this.CustomBar
+      CustomBar: this.navBarHeight
     }
   },
   name: 'rs-navbar',
@@ -31,9 +30,12 @@ export default {
     navStyle() {
       var CustomBar = this.myNavHeight
       var bgImage = this.bgImage
+      var bg = this.bg
       var style = `height:${CustomBar}px;background-color: ${this.bgColor};`
       if (this.bgImage) {
         style = `${style}background-image:url(${bgImage});`
+      } else if (this.bg) {
+        style = `${style}background: ${bg};`
       }
       return style
     },
@@ -49,7 +51,7 @@ export default {
   props: {
     backIconClass: {
       type: String,
-      default: 'hdIcon-arrow-left'
+      default: 'rsIcon-arrow-left'
     },
     backIconColor: {
       type: String,
@@ -75,6 +77,10 @@ export default {
     navHidden: {
       type: Boolean,
       default: false
+    },
+    bg: {
+      type: String,
+      default: ''
     }
   },
   mounted() {},

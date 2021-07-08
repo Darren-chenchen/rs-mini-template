@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import themeStyle from '@/components/rscss/colors.scss'
+
 export default {
   name: 'rs-section-selector',
   props: {
@@ -33,7 +35,7 @@ export default {
     // 激活的颜色
     activeColor: {
       type: String,
-      default: '#303133'
+      default: themeStyle.primary
     },
     // 模式选择，mode=button为按钮形式，mode=subsection时为分段模式
     mode: {

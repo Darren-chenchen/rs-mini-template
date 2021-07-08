@@ -28,7 +28,16 @@
         @tap="clickItem(index)"
       >
         <view v-if="item[imageKey] && !item[videoKey]">
-          <image :src="item[imageKey]" :style="{ height: swiperHeight + 'px' }" mode="aspectFill" />
+          <image
+            :src="item[imageKey]"
+            :style="{
+              height: swiperHeight + 'px',
+              width: card ? '94%' : '100%',
+              marginLeft: card ? '3%' : '0px',
+              borderRadius: card ? '8px' : '0px'
+            }"
+            mode="aspectFill"
+          />
           <text
             v-if="textTip"
             class="swiperText"
@@ -234,9 +243,10 @@ export default {
       type: Boolean,
       default: true
     },
-    errorImg: {
-      type: String,
-      default: ''
+    card: {
+      // 是否card样式
+      type: Boolean,
+      default: false
     }
   },
   data() {

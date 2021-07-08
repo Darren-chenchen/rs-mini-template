@@ -1,0 +1,26 @@
+$primary: #2ba7f1;
+$error: #f00a0a;
+$warning: #f19600;
+$success: #08a440;
+
+$white: #fff;
+$black: #202124;
+$grey: #65686f;
+$light: #a1a1a1;
+$gap: #f5f5f5;
+$gd-primary: linear-gradient(135deg, rgba(255, 160, 58, 1) 0%, rgba(255, 103, 27, 1) 100%);
+$gd-primary-column: linear-gradient(360deg, rgba(255, 160, 58, 0) 0%, rgba(255, 150, 53, 1) 32%, rgba(255, 103, 27, 1) 100%);
+
+:export {
+  primary: $primary;
+  error: $error;
+  warning: $warning;
+  success: $success;
+  white: $white;
+  black: $black;
+  grey: $grey;
+  light: $light;
+  gap: $gap;
+  gd-primary: $gd-primary;
+  gd-primary-column: $gd-primary-column;
+}

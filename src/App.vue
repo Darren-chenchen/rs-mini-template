@@ -4,6 +4,8 @@ export default Vue.extend({
   mpType: 'app',
   onLaunch() {
     var sysdata: any = uni.getSystemInfoSync()
+    // h5导航栏高度
+    Vue.prototype.navBarHeight = 44
     // #ifndef MP
     Vue.prototype.statusBarHeight = sysdata.statusBarHeight
     if (sysdata.platform === 'android') {

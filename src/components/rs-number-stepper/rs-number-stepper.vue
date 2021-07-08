@@ -1,11 +1,11 @@
 <template>
   <view class="rs-number-stepper" @click.stop>
     <view @click.stop="_calcValue('minus')" class="rs-numbox__minus">
-      <text class="rs-numbox--text hdIcon-minus" :class="{ 'rs-numbox--disabled': inputValue <= min || disabled }"></text>
+      <text class="rs-numbox--text rsIcon-minus" :class="{ 'rs-numbox--disabled': inputValue <= minVal || disabled }"></text>
     </view>
     <input :disabled="disabled" @blur="_onBlur" @focus="_onFocus" class="rs-numbox__value" type="number" v-model="inputValue" />
     <view @click.stop="_calcValue('plus')" class="rs-numbox__plus">
-      <text class="rs-numbox--text hdIcon-add" :class="{ 'rs-numbox--disabled': inputValue >= max || disabled }"></text>
+      <text class="rs-numbox--text rsIcon-add" :class="{ 'rs-numbox--disabled': inputValue >= maxVal || disabled }"></text>
     </view>
   </view>
 </template>
@@ -18,25 +18,55 @@ import { Component, Prop, Watch } from 'vue-property-decorator'
   components: {}
 })
 export default class Index extends Vue {
-  @Prop({ default: 1 })
-  value: number = 1
-  @Prop({ default: 1 })
-  min: number = 1
-  @Prop({ default: 100 })
-  max: number = 100
-  @Prop({ default: 1 })
-  step: number = 1
-  @Prop({ default: false })
-  disabled: boolean = false
+  @Prop({
+    type: Number,
+    default: 1
+  })
+  value!: number
+  @Prop({
+    type: Number,
+    default: 1
+  })
+  min!: number
+  @Prop({
+    type: Number,
+    default: 999999
+  })
+  max!: number
+  @Prop({
+    type: Number,
+    default: 1
+  })
+  step!: number
+  @Prop({
+    type: Boolean,
+    default: false
+  })
+  disabled!: boolean
 
   inputValue = '1'
   focus = false
   needEmit = false
+  minVal = 1
+  maxVal = 100
+  stepVal = 1
 
   @Watch('value')
   valueChanged(val: string, oldVal: string) {
     this.inputValue = val.toString()
     this.needEmit = false
+  }
+  @Watch('min')
+  minValChange(val: number, oldVal: number) {
+    this.minVal = val
+  }
+  @Watch('max')
+  maxValChange(val: number, oldVal: number) {
+    this.maxVal = val
+  }
+  @Watch('step')
+  stepValChange(val: number, oldVal: number) {
+    this.stepVal = val
   }
 
   @Watch('inputValue')
@@ -54,6 +84,9 @@ export default class Index extends Vue {
 
   created() {
     this.inputValue = this.value.toString()
+    this.minVal = this.min
+    this.maxVal = this.max
+    this.stepVal = this.step
   }
 
   _calcValue(type: any) {
@@ -62,32 +95,31 @@ export default class Index extends Vue {
     }
     const scale = this._getDecimalScale()
     let value = Number(this.inputValue) * scale
-    let step = this.step * scale
+    let step = this.stepVal * scale
     if (type === 'minus') {
       value -= step
-      if (value < this.min) {
+      if (value < this.minVal) {
         return
       }
-      if (value > this.max) {
-        value = this.max
+      if (value > this.maxVal) {
+        value = this.maxVal
       }
     } else if (type === 'plus') {
       value += step
-      if (value > this.max) {
+      if (value > this.maxVal) {
         return
       }
-      if (value < this.min) {
-        value = this.min
+      if (value < this.minVal) {
+        value = this.minVal
       }
     }
-
     this.inputValue = (value / scale).toString()
   }
   _getDecimalScale() {
     let scale = 1
     // 浮点型
-    if (~~this.step !== this.step) {
-      scale = Math.pow(10, (this.step + '').split('.')[1].length)
+    if (~~this.stepVal !== this.stepVal) {
+      scale = Math.pow(10, (this.stepVal + '').split('.')[1].length)
     }
     return scale
   }
@@ -97,23 +129,22 @@ export default class Index extends Vue {
     value = Number(value)
     // 不是数字
     if (!value) {
-      this.inputValue = this.min.toString()
-      this.$emit('change', this.min)
+      this.inputValue = this.minVal.toString()
+      this.$emit('change', this.minVal)
       return
     }
     // 不是整数倍
-    if (value % this.step !== 0) {
-      // this.inputValue = this.min;
-      value = value - (value % this.step)
+    if (value % this.stepVal !== 0) {
+      value = value - (value % this.stepVal)
       this.inputValue = value
       this.$emit('change', value)
       return
     }
     value = +value
-    if (value > this.max) {
-      value = this.max
-    } else if (value < this.min) {
-      value = this.min
+    if (value > this.maxVal) {
+      value = this.maxVal
+    } else if (value < this.minVal) {
+      value = this.minVal
     }
     // this.inputValue = value;
     if (value !== this.inputValue) {

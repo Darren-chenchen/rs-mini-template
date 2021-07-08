@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import themeStyle from '@/components/rscss/colors.scss'
+
 export default {
   name: 'rs-loading',
   computed: {
@@ -24,7 +26,7 @@ export default {
       return this.$loadingStore.state.image
     },
     borderColor() {
-      return '#0065FF'
+      return themeStyle.primary
     }
   },
   methods: {},

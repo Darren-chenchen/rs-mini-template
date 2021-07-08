@@ -1,7 +1,7 @@
 <template>
   <view class="searchBar">
     <view class="searchBar-content" v-if="disable === false">
-      <text class="hdIcon-search" style="margin-left: 8px;color: #C8C7CC;"></text>
+      <text class="rsIcon-search" style="margin-left: 8px;color: #C8C7CC;"></text>
       <input
         ref="input"
         v-model="query"
@@ -12,11 +12,11 @@
         @confirm="beginSearch"
       />
       <view class="close-wrapper" @click.stop="clear">
-        <text class="hdIcon-close-circle" style="color: #ddd;" v-show="query"></text>
+        <text class="rsIcon-close-circle" style="color: #ddd;" v-show="query"></text>
       </view>
     </view>
     <view class="searchBar-content" v-else @click.stop="clickSearch">
-      <text class="hdIcon-search" style="margin-left: 8px;color: #C8C7CC;"></text>
+      <text class="rsIcon-search" style="margin-left: 8px;color: #C8C7CC;"></text>
       <input class="search-input" :disabled="true" :placeholder="placeText" />
     </view>
   </view>
@@ -25,7 +25,15 @@
 <script type="text/ecmascript-6">
 export default {
   name: 'rs-searchbar',
+  model: {
+    prop: 'value',
+    event: 'clickDone'
+  },
   props: {
+    value: {
+       type: String,
+      default: ''
+    },
     placeText: {
       type: String,
       default: '请输入搜索关键字'
@@ -59,6 +67,7 @@ export default {
     },
     clear() {
       this.query = ''
+      this.$emit('clickDone', this.query)
     },
     blur() {
       this.$refs.input.blur()

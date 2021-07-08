@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import themeStyle from '@/components/rscss/colors.scss'
+
 export default {
   name: 'rs-code-btn',
   props: {
@@ -26,11 +28,11 @@ export default {
     },
     color: {
       type: String,
-      default: '#000'
+      default: themeStyle.primary
     },
     borderColor: {
       type: String,
-      default: '#000'
+      default: themeStyle.primary
     },
     /// 是否自动开启倒计时
     autoCountDown: {
@@ -49,7 +51,6 @@ export default {
 
   watch: {
     second(newValue, oldValue) {
-      console.log(newValue, this.autoCountDown)
       if (this.autoCountDown) {
         this.codeBtnClick()
       }

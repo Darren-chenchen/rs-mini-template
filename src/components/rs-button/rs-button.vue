@@ -74,15 +74,17 @@
  * @event {Function} launchapp 打开 APP 成功的回调
  * @example <rs-button>月落</rs-button>
  */
+import themeStyle from '@/components/rscss/colors.scss'
+
 export default {
   name: 'rs-button',
   props: {
     // 是否细边框
     hairLine: {
       type: Boolean,
-      default: true
+      default: false
     },
-    // 按钮的预置样式，default，primary，error，warning，success
+    // 按钮的预置样式，default，primary，error，warning，success, text
     type: {
       type: String,
       default: 'default'
@@ -182,7 +184,7 @@ export default {
     // 是否开启水波纹效果
     ripple: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 按下的类名
     hoverClass: {
@@ -214,11 +216,46 @@ export default {
         style.backgroundColor = '#ffffff'
         style.borderColor = '#e4e7ed'
       } else {
-        style.color = '#000'
-        style.backgroundColor = '#ffffff'
-        style.borderColor = '#c0c4cc'
+        if (Object.keys(this.customStyle || {}).length != 0) {
+          return this.customStyle
+        }
+        if (this.type === 'default') {
+          style.color = '#000'
+          style.backgroundColor = '#ffffff'
+          style.borderColor = '#c0c4cc'
+        }
+        if (this.type === 'primary') {
+          style.color = '#fff'
+          style.backgroundColor = themeStyle.primary
+        }
+        if (this.type === 'error') {
+          style.color = '#fff'
+          style.backgroundColor = themeStyle.error
+        }
+        if (this.type === 'warning') {
+          style.color = '#fff'
+          style.backgroundColor = themeStyle.warning
+        }
+        if (this.type === 'success') {
+          style.color = '#fff'
+          style.backgroundColor = themeStyle.success
+        }
+        if (this.type === 'text') {
+          style.color = themeStyle.primary
+          style.backgroundColor = 'transparent'
+        }
+        if (this.plain) {
+          style.color = style.backgroundColor
+          style.backgroundColor = this.hexToRgba(style.backgroundColor, 0.2)
+          style.borderColor = style.backgroundColor
+
+          if (this.type === 'default') {
+            style.borderColor = themeStyle.primary
+            style.color = themeStyle.primary
+          }
+        }
       }
-      return Object.assign(style, this.customStyle)
+      return style
     },
     // 在'primary', 'success', 'error', 'warning'类型下，不显示边框，否则会造成四角有毛刺现象
     showHairLineBorder() {
@@ -238,6 +275,19 @@ export default {
     }
   },
   methods: {
+    hexToRgba(hex, opacity) {
+      return hex && hex.replace(/\s+/g, '').length === 7
+        ? 'rgba(' +
+            parseInt('0x' + hex.slice(1, 3)) +
+            ',' +
+            parseInt('0x' + hex.slice(3, 5)) +
+            ',' +
+            parseInt('0x' + hex.slice(5, 7)) +
+            ',' +
+            opacity +
+            ')'
+        : ''
+    },
     // 按钮点击
     click(e) {
       // 如果按钮时disabled和loading状态，不触发水波纹效果
@@ -322,6 +372,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'components/rscss/colors.scss';
+
 .rs-btn::after {
   border: none;
 }
@@ -358,7 +410,6 @@ export default {
   height: 200%;
   -webkit-transform: scale(0.5, 0.5);
   transform: scale(0.5, 0.5);
-  border: 1px solid currentColor;
   z-index: 0;
 }
 
@@ -422,62 +473,62 @@ export default {
 }
 .rs-primary-plain-hover {
   color: #ffffff !important;
-  background: #2b85e4 !important;
+  background: $primary !important;
 }
 
 .rs-default-plain-hover {
-  color: #2b85e4 !important;
+  color: $primary !important;
   background: #ecf5ff !important;
 }
 
 .rs-success-plain-hover {
   color: #ffffff !important;
-  background: #18b566 !important;
+  background: $success !important;
 }
 
 .rs-warning-plain-hover {
   color: #ffffff !important;
-  background: #f29100 !important;
+  background: $warning !important;
 }
 
 .rs-error-plain-hover {
   color: #ffffff !important;
-  background: #dd6161 !important;
+  background: $error !important;
 }
 
 .rs-info-plain-hover {
   color: #ffffff !important;
-  background: #82848a !important;
+  background: $grey !important;
 }
 
 .rs-default-hover {
-  color: #2b85e4 !important;
-  border-color: #2b85e4 !important;
+  color: $primary !important;
+  border-color: $primary !important;
   background-color: #ecf5ff !important;
 }
 
 .rs-primary-hover {
-  background: #2b85e4 !important;
+  background: $primary !important;
   color: #fff;
 }
 
 .rs-success-hover {
-  background: #18b566 !important;
+  background: $success !important;
   color: #fff;
 }
 
 .rs-info-hover {
-  background: #82848a !important;
+  background: $grey !important;
   color: #fff;
 }
 
 .rs-warning-hover {
-  background: #f29100 !important;
+  background: $warning !important;
   color: #fff;
 }
 
 .rs-error-hover {
-  background: #dd6161 !important;
+  background: $error !important;
   color: #fff;
 }
 </style>

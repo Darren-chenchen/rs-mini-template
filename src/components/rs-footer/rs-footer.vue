@@ -7,21 +7,23 @@
 
     <view class="spinner-box" v-if="loadingType == 'spinner'">
       <view class="pulse-container">
-        <view class="pulse-bubble pulse-bubble-1"></view>
-        <view class="pulse-bubble pulse-bubble-2"></view>
-        <view class="pulse-bubble pulse-bubble-3"></view>
+        <view class="pulse-bubble pulse-bubble-1" :style="{ 'background-color': borderColor }"></view>
+        <view class="pulse-bubble pulse-bubble-2" :style="{ 'background-color': borderColor }"></view>
+        <view class="pulse-bubble pulse-bubble-3" :style="{ 'background-color': borderColor }"></view>
       </view>
     </view>
   </view>
 </template>
 
 <script>
+import themeStyle from '@/components/rscss/colors.scss'
+
 export default {
   name: 'rs-footer',
   props: {
     borderColor: {
       type: String,
-      default: ''
+      default: themeStyle.primary
     },
     loadingStyle: {
       type: String,
@@ -36,7 +38,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import 'components/rscss/colors.scss';
 .rs-footer-wrapper {
   display: flex;
   align-items: center;
@@ -100,7 +103,7 @@ export default {
   width: 20upx;
   height: 20upx;
   border-radius: 50%;
-  background-color: #0065ff;
+  background-color: $primary;
 }
 
 .pulse-bubble-1 {

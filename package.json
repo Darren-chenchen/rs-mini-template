@@ -36,9 +36,7 @@
     "core-js": "^3.6.5",
     "eslint-loader": "^4.0.2",
     "flyio": "^0.6.2",
-    "node-sass": "^4.11.0",
     "regenerator-runtime": "^0.12.1",
-    "sass-loader": "^7.1.0",
     "vue": "^2.6.11",
     "vue-class-component": "^6.3.2",
     "vue-property-decorator": "^8.0.0",
@@ -73,10 +71,13 @@
     "jest": "^25.4.0",
     "mini-types": "*",
     "miniprogram-api-typings": "*",
+    "node-sass": "^4.14.1",
     "postcss-comment": "^2.0.0",
     "prettier": "^1.19.1",
+    "sass-loader": "^7.3.1",
     "typescript": "^3.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.1.0"
   },
   "browserslist": [
     "Android >= 4",

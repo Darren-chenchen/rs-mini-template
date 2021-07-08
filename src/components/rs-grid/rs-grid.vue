@@ -53,27 +53,33 @@ export default {
       dataArr: null
     }
   },
-
   watch: {
     pictures(newValue, oldValue) {
+      console.log(22222)
+
       if (newValue && newValue.length > 0) {
-        this.row = newValue.length % this.column === 0 ? newValue.length / this.column : Math.floor(newValue.length / this.column) + 1
-        // 将数组拆分成n维数组
-        let arr = []
-        for (let i = 0; i < this.row; i++) {
-          let subarr = []
-          let addlength = i === this.row - 1 ? newValue.length : this.column + i * this.column
-          subarr = newValue.slice(i * this.column, addlength)
-          arr.push(subarr)
-        }
-        this.dataArr = arr
+        this.getData(newValue)
       }
     }
   },
 
-  mounted() {},
+  mounted() {
+    this.getData(this.pictures || [])
+  },
   created() {},
   methods: {
+    getData(newValue) {
+      this.row = newValue.length % this.column === 0 ? newValue.length / this.column : Math.floor(newValue.length / this.column) + 1
+      // 将数组拆分成n维数组
+      let arr = []
+      for (let i = 0; i < this.row; i++) {
+        let subarr = []
+        let addlength = i === this.row - 1 ? newValue.length : this.column + i * this.column
+        subarr = newValue.slice(i * this.column, addlength)
+        arr.push(subarr)
+      }
+      this.dataArr = arr
+    },
     _onClick(data) {
       this.$emit('itemClick', data)
     },

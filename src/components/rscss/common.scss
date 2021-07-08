@@ -1,8 +1,14 @@
 @import 'components/rscss/rs-icon/iconfont.css';
+@import 'components/rscss/colors.scss';
 
 .rs-flex-row {
   display: flex;
   align-items: center;
+}
+.rs-flex-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .rs-flex-column {
   display: flex;
@@ -50,41 +56,40 @@
     -webkit-line-clamp: $i;
   }
 }
-
-// image大小
-@for $i from 10 through 121 {
-  .rs-image-#{$i} {
-    width: $i * 2 + rpx;
-    height: $i * 2 + rpx;
-  }
+// 增加点击区域的热点,设置在view上，不能用于image
+.rs-click-expand {
+  position: relative;
+}
+.rs-click-expand::before {
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
 }
 
-// 定义字体(px)单位
-@for $i from 9 to 100 {
-  .rs-font-#{$i} {
-    font-size: $i + px;
+$theme-colors: (
+  'white': $white,
+  'black': $black,
+  'grey': $grey,
+  'light': $light,
+  'primary': $primary,
+  'error': $error,
+  'warning': $warning,
+  'success': $success,
+  'gap': $gap,
+  'gd-primary': $gd-primary,
+  'gd-primary-column': $gd-primary-column
+);
+
+@each $key, $value in $theme-colors {
+  .rs-color-#{$key} {
+    color: $value;
   }
 }
 
-// 字重
-@for $i from 300 to 701 {
-  .rs-weight-#{$i} {
-    font-weight: $i;
-  }
-}
-
-@for $i from 1 to 100 {
-  .rs-br-#{$i} {
-    border-radius: $i * 2 + rpx;
-  }
-}
-@for $i from 1 to 100 {
-  .rs-ml-#{$i} {
-    margin-left: $i * 2 + rpx;
-  }
-}
-@for $i from 1 to 100 {
-  .rs-mt-#{$i} {
-    margin-top: $i * 2 + rpx;
+@each $key, $value in $theme-colors {
+  .rs-bg-#{$key} {
+    background: $value;
   }
 }
