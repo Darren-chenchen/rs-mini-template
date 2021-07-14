@@ -60,7 +60,7 @@
 <style scoped lang="scss">
 .rsbutton {
   padding: 12px;
-  .rs-btn {
+  /deep/.rs-btn {
     margin-top: 12px;
   }
   .title {

@@ -13,6 +13,10 @@
     <rs-cell title="我的设置">
       <text style="font-size: 12px;color: #ccc;margin-left: 10px">我是描述</text>
     </rs-cell>
+
+    <view class="rs-bg-gap title">单元格：支持箭头颜色设置</view>
+    <rs-cell title="我的收藏" arrowColor="red"></rs-cell>
+    <rs-cell title="我的设置" arrowColor="blue"></rs-cell>
   </view>
 </template>
 

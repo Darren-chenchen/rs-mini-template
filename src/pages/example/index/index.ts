@@ -62,4 +62,22 @@ export default class index extends Vue {
   doFooter() {
     uni.navigateTo({ url: '/pages/example/index/rsFooter' })
   }
+  doPwd() {
+    uni.navigateTo({ url: '/pages/example/index/rsPwd' })
+  }
+  doPop() {
+    uni.navigateTo({ url: '/pages/example/index/rsPop' })
+  }
+  doTabbar() {
+    uni.navigateTo({ url: '/pages/example/index/rsTabbar' })
+  }
+  doScroll() {
+    uni.navigateTo({ url: '/pages/example/index/rsScrollView' })
+  }
+  doChartLine() {
+    uni.navigateTo({ url: '/pagesChart/pages/example/line/line' })
+  }
+  doChartPie() {
+    uni.navigateTo({ url: '/pagesChart/pages/example/pie/pie' })
+  }
 }

@@ -16,7 +16,4 @@
 
 <script lang="ts" src="./rsLoading.ts"></script>
 
-<style scoped lang="scss">
-.rsloading {
-}
-</style>
+<style scoped lang="scss"></style>

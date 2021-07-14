@@ -28,13 +28,40 @@ const getRouter = () => {
   let router = []
   result.forEach(r => {
     const route = require('./modules/' + r)
-    router = [...router, ...buildRouter(route)]
+    const { subPackages } = route
+    if (!subPackages) {
+      router = [...router, ...buildRouter(route)]
+    }
+  })
+  return router
+}
+
+// 分包
+const getSubRouter = () => {
+  const srcPath = path.resolve(__dirname, './modules')
+  const result = fs.readdirSync(srcPath)
+  let router = []
+
+  result.forEach(r => {
+    const route = require('./modules/' + r)
+    const { subPackages, root } = route
+    if (subPackages) {
+      let subObj = {
+        root: root,
+        pages: []
+      }
+      subObj.pages = [...subObj.pages, ...buildRouter(route)]
+      router.push(subObj)
+    }
   })
   return router
 }
 
 // 构建 pages 并写入 pages.json 文件
 router.pages = getRouter()
+// 分包
+router.subPackages = getSubRouter()
+
 fs.writeFile(
   __dirname + '/../pages.json',
   // 我这边是用两个空格来缩进 pages.json，如果喜欢制表符，第三个参数更换你为 \t 即可

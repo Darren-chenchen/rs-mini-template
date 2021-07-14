@@ -13,6 +13,7 @@
     <rs-cell @cellClick="doNotic" title="公告"></rs-cell>
     <rs-cell @cellClick="doSectionSelect" title="分段选择器"></rs-cell>
     <rs-cell @cellClick="doCustomNav" title="自定义导航栏"></rs-cell>
+    <rs-cell @cellClick="doTabbar" title="Tab选项卡"></rs-cell>
     <rs-cell @cellClick="doCodebtn" title="验证码" :showArrow="false" :ripple="false">
       <view class="rs-flex-row" style="width: calc(100vw - 90px);justify-content: flex-end">
         <rs-code-btn :autoCountDown="true" :second="second" @onClick="onClick"></rs-code-btn>
@@ -24,10 +25,17 @@
     <rs-cell @cellClick="doModal" title="Modal弹框"></rs-cell>
     <rs-cell @cellClick="doLoading" title="Loading"></rs-cell>
     <rs-cell @cellClick="doSwipeDelete" title="侧滑删除"></rs-cell>
+    <rs-cell @cellClick="doPop" title="Pop弹层"></rs-cell>
     <!-- 公共页面 -->
     <view class="rs-bg-gap title">公共页面</view>
     <rs-cell @cellClick="doEmpty" title="空页面"></rs-cell>
     <rs-cell @cellClick="doFooter" title="上拉加载效果footer"></rs-cell>
+    <rs-cell @cellClick="doPwd" title="密码输入框"></rs-cell>
+    <rs-cell @cellClick="doScroll" title="滚动视图(mescroll)"></rs-cell>
+    <!-- 表格 -->
+    <view class="rs-bg-gap title">图标F2,注意分包的使用</view>
+    <rs-cell @cellClick="doChartLine" title="折线图"></rs-cell>
+    <rs-cell @cellClick="doChartPie" title="饼图"></rs-cell>
   </view>
 </template>
 

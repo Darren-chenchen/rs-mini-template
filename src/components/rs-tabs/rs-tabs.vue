@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import themeStyle from '@/components/rscss/colors.scss'
+
 export default {
   name: 'rs-tabs',
   props: {
@@ -42,11 +44,11 @@ export default {
     }, // 选中项
     activeColor: {
       type: String,
-      default: ''
+      default: themeStyle.primary
     }, // tab选中颜色
     lineColor: {
       type: String,
-      default: ''
+      default: themeStyle.primary
     }, // 下划线选中颜色
     lineAnimated: {
       // 是否展示下划线动画

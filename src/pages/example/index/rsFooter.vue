@@ -25,7 +25,4 @@
 
 <script lang="ts" src="./rsFooter.ts"></script>
 
-<style scoped lang="scss">
-.rsfooter {
-}
-</style>
+<style scoped lang="scss"></style>

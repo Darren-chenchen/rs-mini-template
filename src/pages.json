@@ -106,6 +106,12 @@
       }
     },
     {
+      "path": "pages/example/index/rsTabbar",
+      "style": {
+        "navigationBarTitleText": "tabbar选项卡"
+      }
+    },
+    {
       "path": "pages/example/index/rsToast",
       "style": {
         "navigationBarTitleText": "Toast"
@@ -142,6 +148,24 @@
       }
     },
     {
+      "path": "pages/example/index/rsPwd",
+      "style": {
+        "navigationBarTitleText": "密码框"
+      }
+    },
+    {
+      "path": "pages/example/index/rsPop",
+      "style": {
+        "navigationBarTitleText": "弹层"
+      }
+    },
+    {
+      "path": "pages/example/index/rsScrollView",
+      "style": {
+        "navigationBarTitleText": "滚动视图"
+      }
+    },
+    {
       "path": "pages/example/icon/icon",
       "style": {
         "navigationBarTitleText": "内置图标"
@@ -152,6 +176,25 @@
       "style": {
         "navigationBarTitleText": "全局功能"
       }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pagesChart",
+      "pages": [
+        {
+          "path": "pages/example/line/line",
+          "style": {
+            "navigationBarTitleText": "折线图"
+          }
+        },
+        {
+          "path": "pages/example/pie/pie",
+          "style": {
+            "navigationBarTitleText": "饼图"
+          }
+        }
+      ]
     }
   ]
 }

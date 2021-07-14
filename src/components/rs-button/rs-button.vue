@@ -1,7 +1,7 @@
 <template>
   <button
     id="rs-wave-btn"
-    class="rs-btn rs-line-1 rs-fix-ios-appearance"
+    class="rs-btn"
     :class="[
       'rs-size-' + size,
       plain ? 'rs-' + type + '-plain' : '',

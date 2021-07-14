@@ -18,8 +18,8 @@ rs-mini-cli js test /src/pages
 # 新建 ts 组件模板
 
 ```
-rs-mini-cli js 文件名 文件路径
-rs-mini-cli js test /src/pages
+rs-mini-cli ts 文件名 文件路径
+rs-mini-cli ts test /src/pages
 
 ```
 

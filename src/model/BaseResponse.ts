@@ -1,4 +1,4 @@
-export default class Response<T> {
+export default class BaseResponse<T> {
   // 响应码
   code: number = 0
   // 结果信息

@@ -51,6 +51,10 @@ module.exports = {
       navigationStyle: 'custom'
     },
     {
+      path: 'index/rsTabbar',
+      name: 'tabbar选项卡'
+    },
+    {
       path: 'index/rsToast',
       name: 'Toast'
     },
@@ -74,7 +78,18 @@ module.exports = {
       path: 'index/rsFooter',
       name: 'Footer'
     },
-
+    {
+      path: 'index/rsPwd',
+      name: '密码框'
+    },
+    {
+      path: 'index/rsPop',
+      name: '弹层'
+    },
+    {
+      path: 'index/rsScrollView',
+      name: '滚动视图'
+    },
     {
       path: 'icon/icon',
       name: '内置图标'

@@ -1,5 +1,5 @@
 {
-  "name": "wmpf-mini",
+  "name": "test",
   "appid": "",
   "description": "",
   "versionName": "1.0.0",
@@ -52,8 +52,8 @@
     /* 快应用特有相关 */
   },
   "mp-weixin": {
-    /* 小程序特有相关 */ "usingComponents": true,
-    "appid": "wx9d2b7509cfe7fa90",
+    "usingComponents": true,
+    "appid": "",
     "setting": {
       "urlCheck": true
     }

@@ -1,17 +1,13 @@
-import Config from '@/config'
-
 var Fly = require('flyio/dist/npm/wx')
 
 var fly = new Fly()
-fly.config.baseURL = Config.baseUrl
-// fly.config.timeout = 2 * 1000; 不起作用
+fly.config.baseURL = process.env.VUE_APP_BASE_URL
 
 var Authorization = ''
 
 // 请求拦截
 fly.interceptors.request.use((request: any) => {
   request.headers['Content-Type'] = 'application/json'
-  request.headers.appId = Config.appId
   request.headers['Authorization'] = Authorization
   let tranceid = new Date().getTime()
   request.headers.trace_id = tranceid
@@ -19,13 +15,7 @@ fly.interceptors.request.use((request: any) => {
 })
 // 返回拦截
 fly.interceptors.response.use(
-  function (response: any) {
-    if (response.request.url.indexOf('member/login') > 0) {
-      if (response.headers.authorization[0]) {
-        console.log(response.headers.authorization[0])
-        Authorization = response.headers.authorization[0]
-      }
-    }
+  function(response: any) {
     if (!response.data || (response.data && response.data.success === false)) {
       let error = new Error()
       if (response.data.msg) {
@@ -42,7 +32,7 @@ fly.interceptors.response.use(
       return Promise.resolve(response.data)
     }
   },
-  function (error: any) {
+  function(error: any) {
     if (!error.status) {
       let newError = new Error()
       newError.message = '请检查网络设置'
