@@ -1,9 +1,10 @@
 import { Component, Vue } from 'vue-property-decorator'
-import MescrollMixin from '@/components/rs-scroll/mescroll-uni/mescroll-mixins.js' // 非uni_modules版本
-import MescrollBody from '@/components/rs-scroll/mescroll-uni/mescroll-body.vue' // 非uni_modules版本
+import MescrollMixin from '@/components/rs-scroll/mescroll-uni/mescroll-mixins.js'
+import MescrollUni from '@/components/rs-scroll/mescroll-uni/mescroll-uni.vue' // 非uni_modules版本
+
 import TestApi from '@/network/TestApi'
 
-@Component({ components: { MescrollBody }, mixins: [MescrollMixin] })
+@Component({ components: { MescrollUni }, mixins: [MescrollMixin] })
 export default class index extends Vue {
   mescroll: any
   downOption: any = {}
@@ -19,7 +20,11 @@ export default class index extends Vue {
   dataList: any[] = []
   downCallback() {
     console.log('downCallback')
-    this.mescroll.resetUpScroll()
+    setTimeout(() => {
+      this.dataList = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3]
+      this.mescroll.endBySize(this.dataList.length, 50)
+      // this.mescroll.endSuccess(this.dataList.length, true)
+    }, 1000)
   }
   upCallback(page) {
     let pageNum = page.num // 页码, 默认从1开始
@@ -31,11 +36,6 @@ export default class index extends Vue {
         this.dataList = this.dataList.concat([1, 2, 3, 4])
         this.mescroll.endBySize(this.dataList.length, total)
       }, 2000)
-    } else {
-      setTimeout(() => {
-        this.dataList = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
-        this.mescroll.endBySize(this.dataList.length, total)
-      }, 1000)
     }
 
     // TestApi.test(pageNum, pageSize)

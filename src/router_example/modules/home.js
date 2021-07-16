@@ -14,6 +14,10 @@ module.exports = {
       name: '单元格'
     },
     {
+      path: 'index/rsInput',
+      name: '输入框'
+    },
+    {
       path: 'index/rsSearchBar',
       name: '搜索框'
     },

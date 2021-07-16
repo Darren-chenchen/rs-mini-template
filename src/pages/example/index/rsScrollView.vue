@@ -1,9 +1,9 @@
 <template>
   <view class="rsscrollview">
-    <div class="title">目前比较完美的解决方案，根据场景不同选择对应的组件mescroll-body或者mescroll-uni。 https://www.mescroll.com/uni.html</div>
-    <mescroll-body ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption">
+    <mescroll-uni ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption">
+      <view class="title">目前比较完美的解决方案，根据场景不同选择对应的组件mescroll-body或者mescroll-uni。 https://www.mescroll.com/uni.html</view>
       <rs-cell v-for="(item, index) in dataList" :key="index" :title="'数据列表' + index"></rs-cell>
-    </mescroll-body>
+    </mescroll-uni>
   </view>
 </template>
 

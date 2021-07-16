@@ -6,7 +6,7 @@
     <view :class="['content', show ? '' : 'visible']">
       <view class="title">
         <view class="close" @click="close()" style="display: flex;align-items: center;justify-content: center">
-          <text class="hdIcon-close" style="color: #999;margin-left: 10px;font-size: 24px;"></text>
+          <text class="rsIcon-close" style="color: #999;margin-left: 10px;font-size: 24px;"></text>
         </view>
         <view class="center">请输入支付密码</view>
         <view class="close"></view>
@@ -34,7 +34,7 @@
         <text>0</text>
       </view>
       <view class="keyboard-item delte" @tap="del()">
-        <text class="img hdIcon-delete-keyboard" style="font-size: 24px;"></text>
+        <text class="img rsIcon-delete-keyboard" style="font-size: 24px;"></text>
       </view>
     </view>
   </view>
@@ -240,7 +240,7 @@ image {
 }
 .keyboard-item {
   box-sizing: border-box;
-  width: 125px;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

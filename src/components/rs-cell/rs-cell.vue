@@ -170,6 +170,6 @@ export default {
 .rs-wave-ripple.rs-wave-active {
   opacity: 0;
   transform: scale(2);
-  transition: opacity 1s linear, transform 0.4s linear;
+  transition: opacity 0.5s linear, transform 0.4s linear;
 }
 </style>

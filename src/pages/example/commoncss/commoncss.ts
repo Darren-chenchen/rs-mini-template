@@ -1,9 +1,17 @@
 import { Component, Vue } from 'vue-property-decorator'
+import DateUtil from '@/utils/dateUtil'
+import Utils from '@/utils/utils'
 @Component({ components: {} })
 export default class index extends Vue {
+  DateUtil = DateUtil
+  Utils = Utils
+  testObj: any = {
+    date: new Date(),
+    price: 1200
+  }
   dataCssArr: any[] = [
     {
-      title: '常用的css抽取，对于颜色和背景色，为了后续主题的切换，尽量采用使用已经封装的颜色值common.scss',
+      title: '常用的css抽取，对于颜色和背景色，为了后续主题的切换，尽量采用使用已经封装的颜色值color.scss',
       value: []
     },
     {
@@ -33,4 +41,5 @@ export default class index extends Vue {
       value: [{ detail: 'class="rs-click-expand"' }]
     }
   ]
+  mounted() {}
 }

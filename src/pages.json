@@ -51,6 +51,12 @@
       }
     },
     {
+      "path": "pages/example/index/rsInput",
+      "style": {
+        "navigationBarTitleText": "输入框"
+      }
+    },
+    {
       "path": "pages/example/index/rsSearchBar",
       "style": {
         "navigationBarTitleText": "搜索框"
@@ -192,6 +198,12 @@
           "path": "pages/example/pie/pie",
           "style": {
             "navigationBarTitleText": "饼图"
+          }
+        },
+        {
+          "path": "pages/example/column/column",
+          "style": {
+            "navigationBarTitleText": "柱状图"
           }
         }
       ]

@@ -10,6 +10,10 @@ module.exports = {
     {
       path: 'pie/pie',
       name: '饼图'
+    },
+    {
+      path: 'column/column',
+      name: '柱状图'
     }
   ]
 }

@@ -4,6 +4,8 @@
     <view class="rs-bg-gap title">基础组件</view>
     <rs-cell @cellClick="doBtn" title="按钮"></rs-cell>
     <rs-cell @cellClick="doCell" title="Cell单元格"></rs-cell>
+    <rs-cell @cellClick="doInput" title="输入框"></rs-cell>
+
     <rs-cell @cellClick="doSearchBar" title="搜索框"></rs-cell>
     <rs-cell @cellClick="doNumberStep" title="计数器"></rs-cell>
     <rs-cell @cellClick="doBanner" title="轮播图"></rs-cell>
@@ -36,6 +38,7 @@
     <view class="rs-bg-gap title">图标F2,注意分包的使用</view>
     <rs-cell @cellClick="doChartLine" title="折线图"></rs-cell>
     <rs-cell @cellClick="doChartPie" title="饼图"></rs-cell>
+    <rs-cell @cellClick="doChartColumn" title="柱状图"></rs-cell>
   </view>
 </template>
 

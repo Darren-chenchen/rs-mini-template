@@ -11,6 +11,9 @@ export default class index extends Vue {
   doCell() {
     uni.navigateTo({ url: '/pages/example/index/rsCell' })
   }
+  doInput() {
+    uni.navigateTo({ url: '/pages/example/index/rsInput' })
+  }
   doSearchBar() {
     uni.navigateTo({ url: '/pages/example/index/rsSearchBar' })
   }
@@ -79,5 +82,8 @@ export default class index extends Vue {
   }
   doChartPie() {
     uni.navigateTo({ url: '/pagesChart/pages/example/pie/pie' })
+  }
+  doChartColumn() {
+    uni.navigateTo({ url: '/pagesChart/pages/example/column/column' })
   }
 }

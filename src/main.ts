@@ -7,6 +7,7 @@ import RSButton from '@/components/rs-button/rs-button.vue'
 import RSCell from '@/components/rs-cell/rs-cell.vue'
 import RsModal from '@/components/rs-modal/rs-modal.vue'
 import RsEmpty from '@/components/rs-empty/rs-empty.vue'
+import Filter from '@/utils/filter.js'
 
 initToast(Vue)
 initLoading(Vue)
@@ -18,5 +19,7 @@ Vue.component('rs-modal', RsModal)
 Vue.component('rs-empty', RsEmpty)
 
 Vue.config.productionTip = false
+
+Filter.init()
 
 new App().$mount()

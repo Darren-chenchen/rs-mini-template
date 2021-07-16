@@ -25,7 +25,7 @@ export default class DateUtil {
     }
     var week = ['天', '一', '二', '三', '四', '五', '六']
     for (var i in obj) {
-      fmt = fmt.replace(new RegExp(i + '+', 'g'), function (m) {
+      fmt = fmt.replace(new RegExp(i + '+', 'g'), function(m) {
         var val = obj[i] + ''
         if (i === 'w') return (m.length > 2 ? '星期' : '周') + week[val]
         for (var j = 0, len = val.length; j < m.length - len; j++) val = '0' + val
@@ -35,8 +35,8 @@ export default class DateUtil {
     return fmt
   }
 
-  static parseDate(text, format) {
-    return new Date(Date.parse(text.replace(/-/g, '/')))
+  static parseDate(text) {
+    return Date.parse(text.replace(/-/g, '/'))
   }
 
   static parseDatePiker(text, format) {
@@ -104,32 +104,32 @@ export default class DateUtil {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate() - amount)
   }
 
-  static nextDate = function (date, amount = 1) {
+  static nextDate = function(date, amount = 1) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate() + amount)
   }
 
-  static addHour = function (date, amount = 1): Date {
+  static addHour = function(date, amount = 1): Date {
     date = new Date(date.getTime() + amount * 60 * 60 * 1000)
     return date
   }
 
-  static addMinute = function (date, amount = 1): Date {
+  static addMinute = function(date, amount = 1): Date {
     date = new Date(date.getTime() + amount * 60 * 1000)
     return date
   }
 
-  static addDay = function (date, amount = 1) {
+  static addDay = function(date, amount = 1) {
     date = new Date(date.getTime() + amount * 60 * 60 * 1000 * 24)
     return date
   }
 
-  static addYear = function (date, amount = 1) {
+  static addYear = function(date, amount = 1) {
     const year = date.getFullYear()
     const month = date.getMonth()
     return DateUtil.changeYearMonthAndClampDate(date, year + amount, month)
   }
 
-  static addMonth = function (date, amount = 1) {
+  static addMonth = function(date, amount = 1) {
     const year = date.getFullYear()
     const month = date.getMonth()
     return DateUtil.changeYearMonthAndClampDate(date, year + Math.floor((month + amount) / 11), Math.floor((month + amount) % 11))
@@ -148,15 +148,15 @@ export default class DateUtil {
   //   }).map((_, n) => n)
   // }
 
-  static modifyDate = function (date, y, m, d) {
+  static modifyDate = function(date, y, m, d) {
     return new Date(y, m, d, date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds())
   }
 
-  static modifyTime = function (date, h, m, s) {
+  static modifyTime = function(date, h, m, s) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate(), h, m, s, date.getMilliseconds())
   }
 
-  static clearTime = function (date) {
+  static clearTime = function(date) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate())
   }
 
@@ -164,38 +164,37 @@ export default class DateUtil {
     return DateUtil.addYear(date, amount * -1)
   }
 
-  static nextYear = function (date, amount = 1) {
+  static nextYear = function(date, amount = 1) {
     return DateUtil.addYear(date, amount)
   }
 
-  static changeYearMonthAndClampDate = function (date, year, month) {
+  static changeYearMonthAndClampDate = function(date, year, month) {
     // clamp date to the number of days in `year`, `month`
     // eg: (2010-1-31, 2010, 2) => 2010-2-28
     const monthDate = Math.min(date.getDate(), DateUtil.getDayCountOfMonth(year, month))
     return DateUtil.modifyDate(date, year, month, monthDate)
   }
 
-  static prevMonth = function (date) {
+  static prevMonth = function(date) {
     const year = date.getFullYear()
     const month = date.getMonth()
     return month === 0 ? DateUtil.changeYearMonthAndClampDate(date, year - 1, 11) : DateUtil.changeYearMonthAndClampDate(date, year, month - 1)
   }
 
-  static nextMonth = function (date) {
+  static nextMonth = function(date) {
     const year = date.getFullYear()
     const month = date.getMonth()
     return month === 11 ? DateUtil.changeYearMonthAndClampDate(date, year + 1, 0) : DateUtil.changeYearMonthAndClampDate(date, year, month + 1)
   }
 
-  static getDayCountOfYear = function (year) {
+  static getDayCountOfYear = function(year) {
     const isLeapYear = year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)
     return isLeapYear ? 366 : 365
   }
 
   // 计算相差的天数、时、分
-  static differTime = function (date) {
+  static differTime = function(date) {
     const now = new Date()
-    console.log(now, date)
     const differTime = date.getTime() - now.getTime()
     // 计算出相差天数
     var days = Math.floor(differTime / (24 * 3600 * 1000))
@@ -222,8 +221,7 @@ export default class DateUtil {
   }
 
   // 计算相差的时、分、秒数组
-  static getDifferTimeArr = function (date) {
-    console.log(date)
+  static getDifferTimeArr = function(date) {
     const now = new Date()
     const differTime = date.getTime() - now.getTime()
     if (differTime <= 0) {

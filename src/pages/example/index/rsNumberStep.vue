@@ -18,6 +18,7 @@
     font-size: 14px;
     margin-top: 12px;
     color: #666;
+    margin-bottom: 10px;
   }
 }
 </style>

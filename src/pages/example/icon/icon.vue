@@ -21,7 +21,10 @@
             <view style="height: 50px; display: flex; flex-direction: column; justify-content: flex-end">
               <text :class="item" style="font-size: 33px"></text>
             </view>
-            <text class="hm-two-clamp" style="width: 32vw; margin-top: 8px; text-align: center; font-size: 12px; color: #808080; height: 36px">
+            <text
+              class="hm-two-clamp"
+              style="width: 32vw; margin-top: 8px; text-align: center; font-size: 12px; color: #808080; height: 36px;user-select: all;"
+            >
               {{ item }}
             </text>
           </view>
