@@ -5,14 +5,8 @@
   "scripts": {
     "example": "node ./src/router_example/build.js && cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve",
     "example:mp-weixin": "node ./src/router_example/build.js && cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
-    "dev:h5": "router_config.sh && cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve",
-    "dev:mp-weixin": "router_config.sh && cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
-    "uat1:h5": "router_config.sh && cross-env NODE_ENV=uat1 UNI_PLATFORM=h5 vue-cli-service uni-serve",
-    "uat1:mp-weixin": "router_config.sh && cross-env NODE_ENV=uat1 UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
-    "stg:h5": "router_config.sh && cross-env NODE_ENV=stg UNI_PLATFORM=h5 vue-cli-service uni-serve",
-    "stg:mp-weixin": "router_config.sh && cross-env NODE_ENV=stg UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
-    "build:h5": "router_config.sh && cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
-    "build:mp-weixin": "router_config.sh && cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build"
+    "build:h5": "node ./src/router_example/build.js && cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
+    "build:mp-weixin": "node ./src/router_example/build.js && cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build"
   },
   "dependencies": {
     "@antv/f2": "^3.8.9",
