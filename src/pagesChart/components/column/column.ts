@@ -6,6 +6,10 @@ import BaseChart from '@/pagesChart/components/base/base.vue'
 })
 export default class index extends Vue {
   @Prop({ type: Array, default: [] }) chartData: any
+  @Prop({ type: Number, default: 250 }) height: any
+  @Prop({ type: Number, default: 375 }) width: any
+  @Prop({ type: String, default: '' }) canvasId: any
+  @Prop({ type: Object, default: {} }) defValue: any
 
   mounted() {}
   initChart(f2, config, chartData) {

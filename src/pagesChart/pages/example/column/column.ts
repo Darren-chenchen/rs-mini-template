@@ -5,8 +5,10 @@ import Column from '@/pagesChart/components/column/column.vue'
 export default class index extends Vue {
   chartData: any[] = []
   defValue: any = {}
+  width: number = 0
 
   mounted() {
+    this.width = uni.getSystemInfoSync().screenWidth
     this.chartData = [
       {
         year: '1951 年',

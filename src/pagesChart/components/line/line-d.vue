@@ -11,6 +11,6 @@
   </view>
 </template>
 
-<script lang="ts" src="./lineSingle.ts"></script>
+<script lang="ts" src="./line-d.ts"></script>
 
 <style scoped lang="scss"></style>

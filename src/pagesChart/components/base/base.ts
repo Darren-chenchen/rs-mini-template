@@ -1,8 +1,9 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+const F2 = require('@antv/f2')
+
 require('@antv/f2/lib/component/guide') // 加载全部的 guide 组件
 const PieLabel = require('@antv/f2/lib/plugin/pie-label')
 const Guide = require('@antv/f2/lib/plugin/guide')
-const F2 = require('@antv/f2')
 const Util = F2.Util
 const Animation = require('@antv/f2/lib/animation/detail')
 
@@ -12,7 +13,17 @@ const Animation = require('@antv/f2/lib/animation/detail')
 export default class base extends Vue {
   @Prop({ type: Array, default: [] }) chartData: any
   @Prop({ type: Function, default: () => {} }) renderChart: any
-  @Prop({ type: Object, default: {} }) defValue: any
+  @Prop({
+    type: Object,
+    default: () => {
+      return {}
+    }
+  })
+  defValue: any
+
+  @Prop({ type: Number, default: 0 }) canvasHeight: any
+  @Prop({ type: Number, default: 0 }) canvasWidth: any
+  @Prop({ type: String, default: '' }) canvasId: any
 
   canvasEl: any
   chart: any
@@ -43,43 +54,25 @@ export default class base extends Vue {
 
   init() {
     // #ifdef H5
-    // const pixelRatio = uni.getSystemInfoSync().pixelRatio
-    // const config = {
-    //   id: 'f2-canvasId',
-    //   pixelRatio: pixelRatio // 指定分辨率
-    // }
-    // this.chart = this.renderChart(F2, config, this.chartData)
-    // if (this.chart) {
-    //   this.canvasEl = this.chart.get('el')
-    // }
-    console.log(122222)
-    const data = [
-      { genre: 'Sports', sold: 275 },
-      { genre: 'Strategy', sold: 115 },
-      { genre: 'Action', sold: 120 },
-      { genre: 'Shooter', sold: 350 },
-      { genre: 'Other', sold: 150 }
-    ]
+    setTimeout(() => {
+      uni
+        .createSelectorQuery()
+        .in(this)
+        .select(`#${this.canvasId}`)
+        .boundingClientRect(data => {
+          const pixelRatio = 1
+          let width = Number(data.width) * pixelRatio
+          let height = Number(data.height) * pixelRatio
+          const context = uni.createCanvasContext(`${this.canvasId}`, this)
 
-    // Step 1: 创建 Chart 对象
-    const chart = new F2.Chart({
-      id: 'f2-canvasId',
-      pixelRatio: uni.getSystemInfoSync().pixelRatio // 指定分辨率
-    })
-
-    console.log(chart, 111)
-
-    // Step 2: 载入数据源
-    chart.source(data)
-
-    // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
-    chart
-      .interval()
-      .position('genre*sold')
-      .color('genre')
-
-    // Step 4: 渲染图表
-    chart.render()
+          const config = { context, width, height, pixelRatio }
+          this.chart = this.renderChart(F2, config, this.chartData)
+          if (this.chart) {
+            this.canvasEl = this.chart.get('el')
+          }
+        })
+        .exec()
+    }, 50)
     // #endif
 
     // #ifdef MP-WEIXIN

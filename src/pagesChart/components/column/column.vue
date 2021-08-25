@@ -1,13 +1,16 @@
 <template>
-  <view class="column">
-    <base-chart :defValue="defValue" :chartData="chartData" :renderChart="initChart"></base-chart>
+  <view>
+    <base-chart
+      :canvasWidth="width"
+      :canvasHeight="height"
+      :canvasId="canvasId"
+      :defValue="defValue"
+      :chartData="chartData"
+      :renderChart="initChart"
+    ></base-chart>
   </view>
 </template>
 
 <script lang="ts" src="./column.ts"></script>
 
-<style scoped lang="scss">
-.column {
-  height: 300px;
-}
-</style>
+<style scoped lang="scss"></style>

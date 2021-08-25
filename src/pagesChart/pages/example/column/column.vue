@@ -1,7 +1,7 @@
 <template>
   <view class="column">
     <view class="rs-bg-gap title">基础柱状图</view>
-    <column :chartData="chartData" :defValue="defValue"></column>
+    <column :width="width" :height="400" canvasId="columnCanvasId1" :chartData="chartData" :defValue="defValue"></column>
   </view>
 </template>
 
