@@ -1,5 +1,6 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 const F2 = require('@antv/f2')
+const MyF2 = require('@antv/my-f2')
 
 require('@antv/f2/lib/component/guide') // 加载全部的 guide 组件
 const PieLabel = require('@antv/f2/lib/plugin/pie-label')
@@ -53,6 +54,34 @@ export default class base extends Vue {
   }
 
   init() {
+    if (this.chart) {
+      this.chart.clear()
+    }
+    // #ifdef MP-ALIPAY
+    setTimeout(() => {
+      dd.createSelectorQuery()
+        .select(`#${this.canvasId}`)
+        .boundingClientRect()
+        .exec(ret => {
+          if (ret) {
+            if (ret[0]) {
+              let data: any = ret[0]
+              const pixelRatio = uni.getSystemInfoSync().pixelRatio
+              let width = Number(data.width)
+              let height = Number(data.height)
+              const context: any = dd.createCanvasContext(`${this.canvasId}`)
+              context.scale(pixelRatio, pixelRatio)
+              const config = { context, width, height, pixelRatio }
+              // 钉钉子组件传值机制不适用，待研究
+              this.chart = this.renderChart(F2, config, this.chartData)
+              if (this.chart) {
+                this.canvasEl = this.chart.get('el')
+              }
+            }
+          }
+        })
+    }, 500)
+    // #endif
     // #ifdef H5
     setTimeout(() => {
       uni
@@ -60,12 +89,13 @@ export default class base extends Vue {
         .in(this)
         .select(`#${this.canvasId}`)
         .boundingClientRect(data => {
-          const pixelRatio = 1
-          let width = Number(data.width) * pixelRatio
-          let height = Number(data.height) * pixelRatio
+          const pixelRatio = uni.getSystemInfoSync().pixelRatio
+          let width = Number(data.width)
+          let height = Number(data.height)
           const context = uni.createCanvasContext(`${this.canvasId}`, this)
 
           const config = { context, width, height, pixelRatio }
+
           this.chart = this.renderChart(F2, config, this.chartData)
           if (this.chart) {
             this.canvasEl = this.chart.get('el')

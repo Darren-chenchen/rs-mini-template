@@ -5,11 +5,13 @@
   "scripts": {
     "example": "node ./src/router_example/build.js && cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve",
     "example:mp-weixin": "node ./src/router_example/build.js && cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
+    "example:mp-dingtalk": "node ./src/router_example/build.js && cross-env NODE_ENV=development UNI_PLATFORM=mp-alipay vue-cli-service uni-build --watch",
     "build:h5": "node ./src/router_example/build.js && cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
     "build:mp-weixin": "node ./src/router_example/build.js && cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build"
   },
   "dependencies": {
     "@antv/f2": "^3.8.9",
+    "@antv/my-f2": "^2.1.6",
     "@dcloudio/uni-app-plus": "^2.0.0-31920210609001",
     "@dcloudio/uni-h5": "^2.0.0-31920210609001",
     "@dcloudio/uni-helper-json": "*",
@@ -77,6 +79,16 @@
     "ios >= 8"
   ],
   "uni-app": {
-    "scripts": {}
+    "scripts": {
+      "mp-dingtalk": {
+        "title": "钉钉小程序",
+        "env": {
+          "UNI_PLATFORM": "mp-alipay"
+        },
+        "define": {
+          "MP-DINGTALK": true
+        }
+      }
+    }
   }
 }

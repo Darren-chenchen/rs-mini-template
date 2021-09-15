@@ -10,7 +10,7 @@
       @touchend="touchEnd"
     ></canvas>
     <!-- #endif -->
-    <!-- #ifdef H5 -->
+    <!-- #ifdef H5 || MP-ALIPAY -->
     <canvas
       :style="{ height: canvasHeight + 'px', width: canvasWidth + 'px' }"
       :canvasId="canvasId"

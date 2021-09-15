@@ -55,6 +55,7 @@ npm run example
 ## 项目模板主要结构
 
 ```
+
 ├── src ---------------------------------------------工作目录
 │ ├── static --------------------------------------站内静态资源
 │ │ ├── example ---------------------------------演示程序图片
@@ -123,4 +124,4 @@ static test(page: number, pagesize: number): Promise<Nullable<BaseResponse<any>>
 
 ### 分包的注意事项
 
-如果使用分包，manifest.json 中需要配置 `"optimization": { "subPackages": true }`,详情见 https://uniapp.dcloud.io/collocation/manifest?id=app-vue-optimization
+如果使用分包，manifest.json 中需要配置 `"optimization": { "subPackages": true }`,详情见 https://uniapp.dcloud.io/collocation/manifest?id=app-vue-optimization。

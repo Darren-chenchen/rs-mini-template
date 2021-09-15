@@ -45,6 +45,7 @@ export default Vue.extend({
   onUnload() {},
   onShow() {
     console.log('App Show')
+    // #ifdef MP-WEIXIN
     const updateManager = uni.getUpdateManager()
     updateManager.onCheckForUpdate(function(res) {
       // 请求完新版本信息的回调
@@ -62,6 +63,7 @@ export default Vue.extend({
         }
       })
     })
+    // #endif
   },
   onHide() {
     console.log('App Hide')

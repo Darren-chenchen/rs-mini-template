@@ -1,7 +1,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import Column from '@/pagesChart/components/column/column.vue'
+import ColumnH from '@/pagesChart/components/column/column-h.vue'
 
-@Component({ components: { Column } })
+@Component({ components: { Column, ColumnH } })
 export default class index extends Vue {
   chartData: any[] = []
   defValue: any = {}

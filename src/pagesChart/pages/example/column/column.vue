@@ -2,6 +2,8 @@
   <view class="column">
     <view class="rs-bg-gap title">基础柱状图</view>
     <column :width="width" :height="400" canvasId="columnCanvasId1" :chartData="chartData" :defValue="defValue"></column>
+    <view class="rs-bg-gap title">基础条状图</view>
+    <column-h :width="width" :height="400" canvasId="columnCanvasId2" :chartData="chartData" :defValue="defValue"></column-h>
   </view>
 </template>
 
